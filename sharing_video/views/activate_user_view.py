@@ -1,12 +1,10 @@
 from enum import Enum
 
-from rest_framework import serializers, status
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from sharing_video.authentication.authentications import TokenForActivateUser
+from ytb_sharing_video.authentication.authentications import TokenForActivateUser
 from sharing_video.exceptions.user_exceptions import ActivateCodeUserNotMatch
 from sharing_video.services.user_services import UserServices, InputInformation
 

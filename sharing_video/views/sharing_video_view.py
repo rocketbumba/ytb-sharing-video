@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from sharing_video.authentication.authentications import CustomTokenAuthentication
+from ytb_sharing_video.authentication.authentications import CustomTokenAuthentication
 from sharing_video.exceptions.common_exceptions import UnknowException
 from sharing_video.services.share_video_services import ShareVideoService, OutputCreateShareVideo, InputCreateShareVideo
 
@@ -28,8 +28,13 @@ class SharingVideoView(APIView):
         try:
             output_data = self.service.get_share_videos()
             response_data = OutputCreateShareVideo(output_data, many=True)
-            print(output_data)
-            return Response(data=response_data.data, status=status.HTTP_200_OK)
+            data = {
+                'success': True,
+                'status_code': ResponseCode.SUCCESS.value,
+                'message': ResponseCode.SUCCESS.value,
+                'data': response_data.data
+            }
+            return Response(data=data, status=status.HTTP_200_OK)
         except UnknowException as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 

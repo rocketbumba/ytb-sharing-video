@@ -1,13 +1,10 @@
 from enum import Enum
 
-from django.core.cache import cache
 from rest_framework import status
-from rest_framework.authtoken.models import Token
-from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from sharing_video.authentication.authentications import CustomTokenAuthentication
+from ytb_sharing_video.authentication.authentications import CustomTokenAuthentication
 from sharing_video.services.user_services import UserServices
 
 
